@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"image/color"
 
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
@@ -17,4 +18,13 @@ func printDebug(screen *ebiten.Image) {
 		dx, dy := coordTranslator.toScreenXY(0, y)
 		ebitenutil.DebugPrintAt(screen, fmt.Sprintf("%d", y), int(dx)-8, int(dy))
 	}
+
+	c := cursorPosition()
+	// ebitenutil.DebugPrint(screen, fmt.Sprintf("%v", c))
+	c2 := cursorRelativePosition()
+	c3 := co
+	ebitenutil.DebugPrintAt(screen, fmt.Sprintf("%v", c2), screenWidth-100, 0)
+	ebitenutil.DebugPrintAt(screen, fmt.Sprintf("%v", c2), screenWidth-100, screenHeight-20)
+
+	ebitenutil.DrawRect(screen, c.X, c.Y, 3, 3, color.White)
 }
